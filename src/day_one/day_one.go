@@ -1,10 +1,9 @@
 package dayone
 
 import (
-	"bufio"
+	"advent_of_code_2024/src/internal/helpers"
 	"fmt"
 	"math"
-	"os"
 	"sort"
 	"strconv"
 	"strings"
@@ -12,7 +11,7 @@ import (
 
 func Solve1() string {
 	ch := make(chan string)
-	go loadInput("day_one/input.txt", ch)
+	go helpers.StreamInput("day_one/input.txt", ch)
 
 	list1 := []int{}
 	list2 := []int{}
@@ -49,7 +48,7 @@ func Solve1() string {
 
 func Solve2() string {
 	ch := make(chan string)
-	go loadInput("day_one/input.txt", ch)
+	go helpers.StreamInput("day_one/input.txt", ch)
 
 	left := []int{}
 	counts := map[int]int{}
@@ -79,23 +78,4 @@ func Solve2() string {
 	}
 
 	return fmt.Sprintf("%d", total)
-}
-
-func loadInput(inputPath string, ch chan string) {
-	defer close(ch)
-
-	file, err := os.Open(inputPath)
-	if err != nil {
-		panic(fmt.Errorf("Couldn't load inputs from %s, error: %w", inputPath, err))
-	}
-	defer file.Close()
-
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		ch <- scanner.Text()
-	}
-
-	if err := scanner.Err(); err != nil {
-		fmt.Println(err)
-	}
 }
