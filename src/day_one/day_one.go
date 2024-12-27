@@ -47,6 +47,40 @@ func Solve1() string {
 	return fmt.Sprintf("%d", total)
 }
 
+func Solve2() string {
+	ch := make(chan string)
+	go loadInput("day_one/input2.txt", ch)
+
+	left := []int{}
+	counts := map[int]int{}
+
+	for line := range ch {
+		fields := strings.Fields(line)
+
+		value1, err := strconv.Atoi(fields[0])
+		if err != nil {
+			panic(fmt.Errorf("Error parsing value 1 from %s", line))
+		}
+
+		left = append(left, value1)
+
+		value2, err := strconv.Atoi(fields[1])
+		if err != nil {
+			panic(fmt.Errorf("Error parsing value 2 from %s", line))
+		}
+
+		counts[value2]++
+	}
+
+	total := 0
+
+	for _, val := range left {
+		total += val * counts[val]
+	}
+
+	return fmt.Sprintf("%d", total)
+}
+
 func loadInput(inputPath string, ch chan string) {
 	defer close(ch)
 
