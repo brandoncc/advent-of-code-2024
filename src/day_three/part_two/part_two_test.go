@@ -44,7 +44,7 @@ func TestParseMultiplicationCalls(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		result := parseMultiplicationCalls(test.input)
+		result, _ := parseMultiplicationCalls(test.input, true)
 
 		if len(result) != len(test.expected) {
 			t.Fatalf("Wrong number of multiplication calls parsed from %s. Expected %d, got %d", test.input, len(test.expected), len(result))
