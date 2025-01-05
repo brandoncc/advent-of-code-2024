@@ -2,6 +2,7 @@ package main
 
 import (
 	dayfourpartone "advent_of_code_2024/src/day_four/part_one"
+	dayfourparttwo "advent_of_code_2024/src/day_four/part_two"
 	dayonepartone "advent_of_code_2024/src/day_one/part_one"
 	dayoneparttwo "advent_of_code_2024/src/day_one/part_two"
 	daythreepartone "advent_of_code_2024/src/day_three/part_one"
@@ -19,4 +20,5 @@ func main() {
 	fmt.Printf("Day 3, part 1: %s\n", daythreepartone.Solve())
 	fmt.Printf("Day 3, part 2: %s\n", daythreeparttwo.Solve())
 	fmt.Printf("Day 4, part 1: %s\n", dayfourpartone.Solve())
+	fmt.Printf("Day 4, part 2: %s\n", dayfourparttwo.Solve())
 }
